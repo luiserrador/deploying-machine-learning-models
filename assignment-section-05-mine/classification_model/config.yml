@@ -1,0 +1,55 @@
+#Package Overview
+package_name: classification_model
+
+# Data Files
+url_data: https://www.openml.org/data/get_csv/16826755/phpMYEkMl
+training_data_file: train.csv
+test_data_file: test.csv
+
+#Variables
+# The variable we are trying to predict (survived)
+target: survived
+
+pipeline_name: classification_model
+pipeline_save_file: regression_model_output_v
+
+features:
+  - pclass
+  - sex
+  - age
+  - sibsp
+  - parch
+  - fare
+  - cabin
+  - embarked
+  - title
+
+# set train/test split
+test_size: 0.2
+
+# to set random seed
+random_state: 0
+
+# variables to drop
+drop_vars:
+  - name
+  - ticket
+  - boat
+  - body
+  - home.dest
+
+# numerical variables
+numerical_vars:
+  - age
+  - fare
+
+# categorical variables
+categorical_vars:
+  - sex
+  - cabin
+  - emvarked
+  - title
+
+# cabin variable
+cabin_vars:
+  - cabin
