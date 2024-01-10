@@ -1,8 +1,8 @@
-import numpy as np
-from classification_model.config.core import config
-from classification_model.pipeline import titanic_pipe
 from processing.data_manager import load_dataset, save_pipeline
 from sklearn.model_selection import train_test_split
+
+from classification_model.config.core import config
+from classification_model.pipeline import titanic_pipe
 
 
 def run_training() -> None:

@@ -47,7 +47,7 @@ numerical_vars:
 categorical_vars:
   - sex
   - cabin
-  - emvarked
+  - embarked
   - title
 
 # cabin variable

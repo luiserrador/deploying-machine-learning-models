@@ -1,14 +1,16 @@
-from pathlib import Path
+import logging
+import re
 from typing import Any, List, Union
 
-import re
 import joblib
 import numpy as np
 import pandas as pd
 from sklearn.pipeline import Pipeline
 
 from classification_model import __version__ as _version
-from classification_model import DATASET_DIR, TRAINED_MODEL_DIR, config
+from classification_model.config.core import TRAINED_MODEL_DIR, config
+
+logger = logging.getLogger(__name__)
 
 
 def get_first_cabin(row: Any) -> Union[str, float]:
@@ -18,7 +20,7 @@ def get_first_cabin(row: Any) -> Union[str, float]:
     """
     try:
         return row.split()[0]
-    except:
+    except AttributeError:
         return np.nan
 
 
@@ -54,19 +56,19 @@ def pre_pipeline_preparation(*, dataframe: pd.DataFrame) -> pd.DataFrame:
     data["age"] = data["age"].astype("float")
 
     # drop unnecessary variables
-    data.drop(labels=config.model_config.unused_fields, axis=1, inplace=True)
+    data.drop(labels=config.model_config.drop_vars, axis=1, inplace=True)
 
     return data
 
 
 def _load_raw_dataset(*, file_name: str) -> pd.DataFrame:
-    dataframe = pd.read_csv(Path(f"{DATASET_DIR}/{file_name}"))
+    dataframe = pd.read_csv(f"{file_name}")
     return dataframe
 
 
 def load_dataset(*, file_name: str) -> pd.DataFrame:
-    dataframe = pd.read_csv(Path(f"{DATASET_DIR}/{file_name}"))
-    transformed = pre_pipeline_preparation(dataframe)
+    dataframe = pd.read_csv(f"{file_name}")
+    transformed = pre_pipeline_preparation(dataframe=dataframe)
 
     return transformed
 

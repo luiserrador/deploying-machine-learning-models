@@ -1,16 +1,8 @@
+from feature_engine.encoding import OneHotEncoder, RareLabelEncoder
+from feature_engine.imputation import AddMissingIndicator, CategoricalImputer, MeanMedianImputer
+from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-
-from feature_engine.imputation import (
-    CategoricalImputer,
-    AddMissingIndicator,
-    MeanMedianImputer)
-
-from feature_engine.encoding import (
-    RareLabelEncoder,
-    OneHotEncoder
-)
 
 from classification_model.config.core import config
 from classification_model.processing.features import ExtractLetterTransformer

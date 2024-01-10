@@ -1,9 +1,9 @@
-import pandas as pd
-
 from typing import Union
 
-from classification_model.config.core import config
+import pandas as pd
+
 from classification_model import __version__ as _version
+from classification_model.config.core import config
 from classification_model.processing.data_manager import load_pipeline
 from classification_model.processing.validation import validate_inputs
 
@@ -26,7 +26,7 @@ def make_prediction(
             X=validated_data[config.model_config.features]
         )
         results = {
-            "predictions": predictions,  # type: ignore
+            "predictions": predictions,
             "version": _version,
             "errors": errors,
         }
