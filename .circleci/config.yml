@@ -70,7 +70,7 @@ jobs:
       - run:
           name: Test the model
           command: |
-            tox
+            tox -r
       - run:
           name: Publish model to Gemfury
           command: |
