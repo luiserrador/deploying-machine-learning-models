@@ -272,6 +272,8 @@ workflows:
       - test_regression_model_py38
       - test_ml_api_py37
       - test_ml_api_py38
+      - section_9_differential_tests
+      - train_and_upload_regression_model
       - section_07_deploy_app_to_railway:
           requires:
             - section_07_test_app
