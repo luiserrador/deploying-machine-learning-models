@@ -268,6 +268,7 @@ workflows:
   deploy_pipeline:
     jobs:
       - section_07_test_app
+      - section_13_train_and_upload_neural_network_model
       - section_07_deploy_app_to_railway:
           requires:
             - section_07_test_app
