@@ -295,10 +295,10 @@ workflows:
             - test_ml_api_py38
             - section_9_differential_tests
             - train_and_upload_regression_model
-           filters:
-             branches:
-               only:
-                 - master
+          filters:
+            branches:
+              only:
+                - master
 
 #  test-all:
 #    jobs:
